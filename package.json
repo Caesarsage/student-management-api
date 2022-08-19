@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "deploy": "tsc;git add . ; git commit -m heroku  ; git push origin main ; npm version patch",
+    "deploy": "tsc;git add . ; git commit -m heroku  ; git push heroku master",
     "build": "npm i ; tsc;",
     "start": "NODE_ENV=production node --max-http-header-size 15000 ./dist/main.js ",
     "serve": "NODE_ENV=development nodemon -L src/main.ts --trace-warnings  ",
