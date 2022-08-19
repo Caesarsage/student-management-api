@@ -2,7 +2,7 @@
   "name": "oris-backend-accessment",
   "version": "1.0.0",
   "description": "",
-  "main": "build/index.js",
+  "main": "dist/main.js",
   "scripts": {
     "deploy": "tsc;git add . ; git commit ; git push origin main ; npm version patch",
 		"build": "npm i ; tsc;",
