@@ -1,15 +1,15 @@
 {
-  "name": "oris-backend-accessment",
+  "name": "student-management-backend",
   "version": "1.0.0",
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "deploy": "tsc;git add . ; git commit ; git push origin main ; npm version patch",
-		"build": "npm i ; tsc;",
-		"start": "NODE_ENV=production node --max-http-header-size 15000 ./dist/main.js ",
-		"serve": "NODE_ENV=development nodemon -L src/main.ts --trace-warnings  ",
-		"generate-keys": "ts-node -r dotenv/config ./src/key_generator.ts",
-		"watch": "tsc -w",
+    "deploy": "tsc;git add . ; git commit -m heroku  ; git push origin main ; npm version patch",
+    "build": "npm i ; tsc;",
+    "start": "NODE_ENV=production node --max-http-header-size 15000 ./dist/main.js ",
+    "serve": "NODE_ENV=development nodemon -L src/main.ts --trace-warnings  ",
+    "generate-keys": "ts-node -r dotenv/config ./src/key_generator.ts",
+    "watch": "tsc -w",
     "lint": "npx eslint . --fix",
     "test": "NODE_ENV=test mocha -r ts-node/register 'src/test/*.test.ts' --watch"
   },
@@ -46,6 +46,6 @@
     "ts-node-dev": "^2.0.0"
   },
   "engines": {
-		"node": "14"
-	}
+    "node": "14"
+  }
 }
