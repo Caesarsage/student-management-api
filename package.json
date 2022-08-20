@@ -44,5 +44,8 @@
     "supertest": "^6.2.4",
     "ts-node": "^10.9.1",
     "ts-node-dev": "^2.0.0"
+  },
+  "engines": {
+    "node": "18.7.0"
   }
 }
