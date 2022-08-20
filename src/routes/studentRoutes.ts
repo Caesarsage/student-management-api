@@ -1,5 +1,5 @@
 import express, { Router } from 'express'
-import { deleteStudent, getSingleStudent, getStudents, registerStudent, updateStudent } from '../controllers/studentControllers'
+import {deleteStudent, getSingleStudent, getStudents, registerStudent, updateStudent } from '../controllers/studentControllers'
 
 const studentRoute: Router = express.Router()
 

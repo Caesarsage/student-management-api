@@ -72,9 +72,20 @@ message	"Welcome to Ori Student management board!!"
 
 - Returns: Returns a success message and register student details.
 
-- Sample: `curl http://127.0.0.1:5000/api/question -X POST -H "Content-Type: application/json" -d '{"name": "Jane", "gender": "Female", "classLevel": "JSS 1"`'
+- Sample:
 
 ```json
+{
+    "message": "successfully created student",
+    "data": {
+        "name": "Caesar",
+        "gender": "Male",
+        "registeredSubjects": [],
+        "_id": "630102a9781c04f980887a56",
+        "id": "630102a9781c04f980887a56",
+        "__v": 0
+    }
+}
 
 ```
 
@@ -84,9 +95,89 @@ message	"Welcome to Ori Student management board!!"
 - Request Arguments: `None`
 - Returns: A data object with a `id`, `name`, `gender`, `class` and `registered subjects`. `Total length` of students also return
 
-- Sample: `curl http://127.0.0.1:5000/api/students`
+- Sample: This endpoint return a total length of 9000 + monk data but for sample, 2 return
 
 ```json
+{
+    "data": [
+        {
+            "_id": "62fee58e5e3720fa590a83a6",
+            "name": "CaesarSage",
+            "gender": "Male",
+            "registeredSubjects": [
+                {
+                    "_id": "62fe5b339c078cde1edd2f84",
+                    "code": "English",
+                    "leadTutor": "Destiny",
+                    "credit": 23,
+                    "__v": 0
+                },
+                {
+                    "_id": "62fe5b5ee44f5a341426ad95",
+                    "code": "Physics",
+                    "leadTutor": "Destiny",
+                    "credit": 23,
+                    "__v": 0
+                },
+                {
+                    "_id": "62fe5b91e44f5a341426ada2",
+                    "code": "CRK",
+                    "leadTutor": "Destiny",
+                    "credit": 23,
+                    "__v": 0
+                }
+            ],
+            "id": "62fee58e5e3720fa590a83a6",
+            "__v": 0
+        },
+        {
+            "_id": "62fee5aa5e3720fa590a83a8",
+            "name": "Caesar",
+            "gender": "Male",
+            "registeredSubjects": [
+                {
+                    "_id": "62fe5b009c078cde1edd2f7f",
+                    "code": "Maths",
+                    "leadTutor": "Destiny",
+                    "credit": 50,
+                    "__v": 0
+                },
+                {
+                    "_id": "62fe5b339c078cde1edd2f84",
+                    "code": "English",
+                    "leadTutor": "Destiny",
+                    "credit": 23,
+                    "__v": 0
+                },
+                {
+                    "_id": "62fe5b6be44f5a341426ad99",
+                    "code": "Chemistry",
+                    "leadTutor": "Destiny",
+                    "credit": 23,
+                    "__v": 0
+                },
+                {
+                    "_id": "62ffcb6e4183d011eea1e636",
+                    "code": "Government",
+                    "leadTutor": "Mary",
+                    "credit": 30,
+                    "__v": 0
+                },
+                {
+                    "_id": "62fe5b5ee44f5a341426ad95",
+                    "code": "Physics",
+                    "leadTutor": "Destiny",
+                    "credit": 23,
+                    "__v": 0
+                }
+            ],
+            "id": "62fee5aa5e3720fa590a83a8",
+            "__v": 0
+        }
+    ],
+    "message": "All student found",
+    "totalLength": 2
+}
 
 ```
 
@@ -96,9 +187,20 @@ message	"Welcome to Ori Student management board!!"
 - Request Arguments: `id` - integer
 - Returns: An object with student details, `name`, `gender`, `classLevel` and `list of registered subjects`.
 
-- Sample: `curl http://127.0.0.1:5000/api/subjets/4`
+- Sample:
 
 ```json
+{
+    "data": {
+        "_id": "6300cdf9da2a835a22e387c3",
+        "name": "Thomas Johnson",
+        "classLevel": "SS 3",
+        "gender": "male",
+        "registeredSubjects": [],
+        "__v": 0
+    },
+    "message": "Single student found"
+}
 
 ```
 
@@ -107,7 +209,7 @@ message	"Welcome to Ori Student management board!!"
 - Deletes a specified student using the id of the student
 - Request Arguments: `id` - integer
 - Returns: Returns a success message.
-- Sample: `curl -X DELETE http://127.0.0.1:5000/student/5`
+- Sample:
 
 ```json
 {
@@ -121,9 +223,20 @@ message	"Welcome to Ori Student management board!!"
 - Request Arguments: A Student `id` - integer and json body containing any of the student data to update, `name` - string, `gender` - string, `classLevel` - string
 - Returns: updated student and a success message
 
-- Sample: `curl -X POST -H "Content-Type: application/json" -d'{"name":"Dennis"}' http://127.0.0.1:5000/api/student/2`
+- Sample:
 
 ```json
+{
+    "data": {
+        "_id": "6300cdf9da2a835a22e387c3",
+        "name": "Thomas Johnson",
+        "classLevel": "SS 3",
+        "gender": "trans-gender",
+        "registeredSubjects": [],
+        "__v": 0
+    },
+    "message": "Single student updated"
+}
 
 ```
 
@@ -137,9 +250,22 @@ message	"Welcome to Ori Student management board!!"
 
 - Returns: An object with registered subjects and a success message.
 
-- Sample: `curl -X POST -H "Content-Type: application/json" -d'{"questions": [{"code": "Maths"}, {"code":"English"}, {"code":"Economics"}, {"code":"CRK"}, {"code":"Physics"}]' http://127.0.0.1:5000/api/subject/student/2`
+- Sample:
 
 ```json
+{
+    "data": {
+        "_id": "6300cdf9da2a835a22e387c3",
+        "name": "Thomas Johnson",
+        "classLevel": "SS 3",
+        "gender": "trans-gender",
+        "registeredSubjects": [
+            "63010357781c04f980887a62"
+        ],
+        "__v": 0
+    },
+    "message": "successfully register your subjects"
+}
 
 ```
 
@@ -154,6 +280,16 @@ message	"Welcome to Ori Student management board!!"
 - Sample :
 
 ```json
+{
+    "data": {
+        "code": "Economics",
+        "leadTutor": "Paul",
+        "credit": 50,
+        "_id": "63010409781c04f980887a84",
+        "__v": 0
+    },
+    "msg": "Successfully created"
+}
 
 ```
 
@@ -165,6 +301,74 @@ message	"Welcome to Ori Student management board!!"
 - Sample: `curl http://127.0.0.1:5000/api/subjects`
 
 ```json
+{
+    "data": [
+        {
+            "_id": "6301034d781c04f980887a5e",
+            "code": "Government",
+            "leadTutor": "Mary",
+            "credit": 30,
+            "__v": 0
+        },
+        {
+            "_id": "63010357781c04f980887a62",
+            "code": "Maths",
+            "leadTutor": "Jane",
+            "credit": 30,
+            "__v": 0
+        },
+        {
+            "_id": "6301036e781c04f980887a66",
+            "code": "English",
+            "leadTutor": "Abert",
+            "credit": 20,
+            "__v": 0
+        },
+        {
+            "_id": "63010379781c04f980887a6a",
+            "code": "Physics",
+            "leadTutor": "Abert",
+            "credit": 21,
+            "__v": 0
+        },
+        {
+            "_id": "6301038b781c04f980887a6e",
+            "code": "Chemistry",
+            "leadTutor": "Ruth",
+            "credit": 31,
+            "__v": 0
+        },
+        {
+            "_id": "630103b3781c04f980887a73",
+            "code": "Biology",
+            "leadTutor": "Destiny",
+            "credit": 30,
+            "__v": 0
+        },
+        {
+            "_id": "630103bb781c04f980887a77",
+            "code": "CRK",
+            "leadTutor": "Destiny",
+            "credit": 30,
+            "__v": 0
+        },
+        {
+            "_id": "630103df781c04f980887a80",
+            "code": "Marketing",
+            "leadTutor": "Caesar",
+            "credit": 50,
+            "__v": 0
+        },
+        {
+            "_id": "63010409781c04f980887a84",
+            "code": "Economics",
+            "leadTutor": "Paul",
+            "credit": 50,
+            "__v": 0
+        }
+    ],
+    "message": "all subjects"
+}
 
 ```
 
@@ -174,9 +378,19 @@ message	"Welcome to Ori Student management board!!"
 - Request Arguments: `id` - integer
 - Returns: An object with subject details, `code`, `leadTutor` and `credit`.
 
-- Sample: `curl http://127.0.0.1:5000/api/subjets/4`
+- Sample:
 
 ```json
+{
+    "data": {
+        "_id": "63010409781c04f980887a84",
+        "code": "Economics",
+        "leadTutor": "Paul",
+        "credit": 50,
+        "__v": 0
+    },
+    "message": "Single subject found"
+}
 
 ```
 
@@ -185,7 +399,7 @@ message	"Welcome to Ori Student management board!!"
 - Deletes a specified subject using the id of the subject
 - Request Arguments: `id` - integer
 - Returns: Returns a success message.
-- Sample: `curl -X DELETE http://127.0.0.1:5000/student/5`
+- Sample:
 
 ```json
 {
@@ -199,8 +413,18 @@ message	"Welcome to Ori Student management board!!"
 - Request Arguments: A subject `id` - integer and json body containing any of the subject data to update, `code` - string, `leadTutor` - string, `credit` - integer
 - Returns: updated subject and a success message
 
-- Sample: `curl -X POST -H "Content-Type: application/json" -d'{"credit":20}' http://127.0.0.1:5000/api/student/2`
+- Sample:
 
 ```json
+{
+    "data": {
+        "_id": "63010409781c04f980887a84",
+        "code": "Economics",
+        "leadTutor": "Paul",
+        "credit": 50,
+        "__v": 0
+    },
+    "message": "Single student updated"
+}
 
 ```
