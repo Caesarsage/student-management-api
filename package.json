@@ -4,14 +4,15 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "deploy": "tsc;git add . && git commit -m heroku  && git push heroku",
+    "deploy": "tsc; git add . && git commit -m heroku  && git push heroku",
     "build": "tsc;",
     "start": "NODE_ENV=production node --max-http-header-size 15000 ./dist/main.js ",
     "serve": "NODE_ENV=development nodemon -L src/main.ts --trace-warnings  ",
     "generate-keys": "ts-node -r dotenv/config ./src/key_generator.ts",
     "watch": "tsc -w",
     "lint": "npx eslint . --fix",
-    "test": "NODE_ENV=test mocha -r ts-node/register 'src/test/*.test.ts' --watch"
+    "test": "NODE_ENV=test mocha -r ts-node/register 'src/test/*.test.ts' --watch",
+    "seedDB": "ts-node ./seed/subject.ts"
   },
   "keywords": [],
   "author": "caesarsage",
@@ -36,6 +37,7 @@
     "@types/supertest": "^2.0.12",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
+    "axios": "^0.27.2",
     "chai": "^4.3.6",
     "chai-http": "^4.3.0",
     "eslint": "^8.21.0",

@@ -27,8 +27,9 @@
   - `PORT`
 
 ## How to run from hosted link
-- Copy the hosted heroku link `link here`
-- Refer to [Endpoint](#endpoints) for Request Arguments requirement to test on postman
+- Copy the `baseUrl` hosted on heroku link https://student-management-api-be.herokuapp.com
+
+- Refer to [Endpoint](#endpoints) for Request Arguments requirement and endpoint to test on postman
 
 ## Error Handling
 
@@ -41,7 +42,7 @@ Errors are returned as JSON objects in the following format:
 }
 ```
 
-The API will return three error types when requests fail:
+The API will return four error types when requests fail:
 
 - 400: Bad Request
 - 404: Not Found
@@ -49,6 +50,19 @@ The API will return three error types when requests fail:
 - 500: Internal server error
 
 ### Endpoints
+
+#### GET `'/'`
+- Home and welcome page
+
+- **Request Arguments** : `None`
+
+- **Returns** : welcome message
+
+- **Sample** :
+
+```json
+message	"Welcome to Ori Student management board!!"
+```
 
 #### POST `'/api/student'`
 

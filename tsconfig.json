@@ -15,6 +15,6 @@
     // "jsx": "preserve",
     // "incremental": true
   },
-  "include": ["src","**/*.ts", "**/*.tsx", "jest.config.js"],
+  "include": ["src","**/*.ts", "**/*.tsx", "jest.config.js", "seed"],
   "exclude": ["node_modules"]
 }

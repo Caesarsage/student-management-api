@@ -33,7 +33,7 @@ export const createSubject = async (request: Request, response: Response, next: 
 }
 
 export const registerSubject = async (request: Request, response: Response, next: NextFunction) => {
-  const { subjects} = await request.body
+  const { subjects } = await request.body
   const {id}= await request.params
 
   const maxSubjectPerStudent = 9
