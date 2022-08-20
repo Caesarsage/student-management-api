@@ -6,7 +6,7 @@ export const launchServer = async () => {
 
   let port: number | string | undefined
   if(process.env.NODE_ENV === 'test') {
-    port = 8111
+    port = readConfig.test_port
     app.listen(port, () => {
       console.log(`Server is running on port ${port}`)
     })
