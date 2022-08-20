@@ -4,10 +4,11 @@
   "description": "",
   "main": "dist/main.js",
   "scripts": {
-    "deploy": "tsc;git add . ; git commit -m heroku  ; git push heroku main",
+    "deploy": "tsc;git add . ; git commit -m heroku  ; git push heroku master ; npm version patch",
     "build": "npm i ; tsc;",
     "start": "NODE_ENV=production node --max-http-header-size 15000 ./dist/main.js ",
     "serve": "NODE_ENV=development nodemon -L src/main.ts --trace-warnings  ",
+    "generate-keys": "ts-node -r dotenv/config ./src/key_generator.ts",
     "watch": "tsc -w",
     "lint": "npx eslint . --fix",
     "test": "NODE_ENV=test mocha -r ts-node/register 'src/test/*.test.ts' --watch"
@@ -21,7 +22,6 @@
     "express": "^4.18.1",
     "mongodb": "^4.8.1",
     "mongoose": "^6.5.2",
-    "node": "^16.17.0",
     "typescript": "^4.7.4"
   },
   "devDependencies": {
