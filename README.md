@@ -12,8 +12,9 @@
 
 #### Prerequisites
 
-- Have nodejs v14 and above installed on your system
+- Have nodejs v18 and above installed on your system
 - Have mongodb installed
+- typescript
 
 #### Dependencies installation
 
@@ -25,6 +26,18 @@
 - Replace the following environment variable with yours
   - `MONGO_URL`
   - `PORT`
+  - `TEST_PORT`
+  - `ADMIN_USERNAME`
+  - `ADMIN_PASSWORD`
+  - `JWT_SECRET`
+  - `JWT_EXPIRY`
+  - `EMAIL`
+
+- seed the database to create student and admin
+  - `npm run seedDB` and `npm run seedAdmin`
+- start the server
+  - `npm run serve`
+- Refer to [Endpoint](#endpoints) for Request Arguments requirement and endpoint to test on postman
 
 ## How to run from hosted link
 - Copy the `baseUrl` hosted on heroku link https://student-management-api-be.herokuapp.com
@@ -51,6 +64,30 @@ The API will return four error types when requests fail:
 
 ### Endpoints
 
+#### Authorization
+- Some endpoints requires auth (authorization) so you first need to login as admin.
+
+#### POST `'/api/auth'`
+- Login to gain admin privileges
+- **Request Arguments**
+  - username : `admin`
+  - password : `admin`
+- **Returns** : user details and token
+- **Sample** :
+
+```json
+{
+    "msg": "login successfully",
+    "data": {
+        "_id": "63018b166c7710a4e2e8873e",
+        "email": "admin@outlook.com",
+        "username": "admin",
+        "isAdmin": true,
+        "__v": 0
+    },
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMDE4YjE2NmM3NzEwYTRlMmU4ODczZSIsInVzZXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQG91dGxvb2suY29tIiwiaXNBZG1pbiI6dHJ1ZSwiaWF0IjoxNjYxMDQ2NzEzLCJleHAiOjE2NjEwNDY3NDN9.NIxRNP4KUocOAm04vt8HqThNp-Z417ny79XR8W0RD88"
+}
+```
 #### GET `'/'`
 - Home and welcome page
 
@@ -300,7 +337,7 @@ message	"Welcome to Ori Student management board!!"
 - Fetch all available subjects.
 - Request Argument: None
 - Returns: a list of available subjects object details and a success message.
-- Sample: `curl http://127.0.0.1:5000/api/subjects`
+- Sample:
 
 ```json
 {

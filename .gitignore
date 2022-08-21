@@ -6,9 +6,6 @@
 .pnp.js
 dist/
 
-seed/
-/seed/*
-
 .next/
 
 # testing
