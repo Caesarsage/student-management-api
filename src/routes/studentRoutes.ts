@@ -1,5 +1,6 @@
 import express, { Router } from 'express'
 import {deleteStudent, getSingleStudent, getStudents, registerStudent, updateStudent } from '../controllers/studentControllers'
+import { authenticateUser, checkIfAdmin } from '../middleware/auth'
 
 const studentRoute: Router = express.Router()
 
@@ -9,12 +10,12 @@ studentRoute
 
 studentRoute
   .route('/student')
-  .post(registerStudent)
+  .post(authenticateUser, registerStudent)
 
 studentRoute
   .route('/student/:id')
-  .get(getSingleStudent)
-  .put(updateStudent)
-  .delete(deleteStudent)
+  .get(authenticateUser, getSingleStudent)
+  .put(authenticateUser, checkIfAdmin, updateStudent)
+  .delete(authenticateUser, checkIfAdmin, deleteStudent)
 
 export default studentRoute

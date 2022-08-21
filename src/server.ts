@@ -6,6 +6,7 @@ import { readConfig }from './config'
 import subjectRoute from './routes/subjectsRoute'
 import studentRoute from './routes/studentRoutes'
 import errorHandler from './utils/error'
+import userRoute from './routes/userRoute'
 
 const middleware = (app: Application) => {
   app.use(express.json())
@@ -18,7 +19,7 @@ const setupRoute = (app: Application) => {
     await response.json({message: 'Welcome to Ori Student management board!!'})
   })
 
-  app.use('/api', [subjectRoute, studentRoute])
+  app.use('/api', [subjectRoute, studentRoute, userRoute])
 
   app.all('*', (request : Request, response: Response, next : NextFunction ) => {
     next(new ErrorResponse('Page not found', 404))
